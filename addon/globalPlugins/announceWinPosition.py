@@ -1,3 +1,6 @@
+# Copywrite (C) 2025 Kieran Gilpin <kgilpin2022@gmail.com>
+# This file is covered by the GNU General Public License.
+
 import globalPluginHandler
 import tones
 import ui
