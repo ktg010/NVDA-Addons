@@ -14,23 +14,21 @@ from site_scons.site_tools.NVDATool.utils import _
 # Add-on information variables
 addon_info = AddonInfo(
 	# add-on Name/identifier, internal for NVDA
-	addon_name="addonTemplate",
+	addon_name="sleepObjGainFocusIndicator",
 	# Add-on summary/title, usually the user visible name of the add-on
 	# Translators: Summary/title for this add-on
 	# to be shown on installation and add-on information found in add-on store
-	addon_summary=_("Add-on user visible name"),
+	addon_summary=_("Gesture to announce sleeping objects."),
 	# Add-on description
 	# Translators: Long description to be shown for this add-on on add-on information from add-on store
-	addon_description=_("""Description for the add-on.
-It can span multiple lines."""),
+	addon_description=_("""Adds a gesture that works for sleeping objects that will announce, as a beep or as speech, the sleeping application when pressed"""),
 	# version
-	addon_version="x.y",
+	addon_version="0.2",
 	# Brief changelog for this version
 	# Translators: what's new content for the add-on version to be shown in the add-on store
-	addon_changelog=_("""Changelog for the add-on version.
-It can span multiple lines."""),
+	addon_changelog=_("""Created the addon/adjusted addon to speak application rather than small focus."""),
 	# Author(s)
-	addon_author="name <name@domain.com>",
+	addon_author="Cooper Wooten <name@domain.com>",
 	# URL for the add-on documentation support
 	addon_url=None,
 	# URL for the add-on repository where the source code can be found
