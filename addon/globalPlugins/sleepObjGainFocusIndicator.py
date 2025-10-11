@@ -24,8 +24,13 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	def script_sleepModeIndicate(self, gesture):
 		focus = api.getFocusObject()
 		curFocus = focus.appModule
+		ancestors = api.getFocusAncestors()
 		if curFocus.sleepMode:
 			if GlobalPlugin.togSleepType == "beep":
 				tones.beep(440, 500)
 			else: 
-				ui.message(f"{focus.name} is currently in sleep mode, Use NVDA plus shift plus z to turn sleep mode off.")
+				if ancestors[1]:
+					appAncestor = ancestors[1]
+					ui.message(f"{appAncestor.name} is currently in sleep mode, Use NVDA plus shift plus z to turn sleep mode off.")
+				else:
+					ui.message(f"{focus.name} is currently in sleep mode, Use NVDA plus shift plus z to turn sleep mode off.")
