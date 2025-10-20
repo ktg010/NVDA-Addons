@@ -14,36 +14,38 @@ import eventHandler
 from source import mouseHandler
 import ui
 
-On = False
+
 # defining plugin
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
-    
-	@scriptHandler.script(gesture="kb:NVDA+alt+g")	
-	def script_indOn():
-		if On == False:
-			speech.speak(["Feature on"], None, priorities.Spri.NOW)
-			log.debug("Feature onnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn")
-			(MaxW, MaxH, wx.Point(X,Y)) = getTotalWidthAndHeightAndMinimumPosition(displays)
-			try:
-				eventHandler.executeEvent("mouseMove", mouseObject, x=x, y=y)
-				if x == X and y == Y:
-					speech.speak(["Mouse at bottom left corner"], None, priorities.Spri.NOW)
-				elif x == X and y = MaxY:
-					speech.speak(["Mouse at top left corner"], None, priorities.Spri.NOW)
-				elif x == MaxW and y == Y:
-					speech.speak(["Mouse at bottom right corner"], None, priorities.Spri.NOW)
-				elif x == MaxW and y == MaxH:
-					speech.speak(["Mouse at top right corner"], None, priorities.Spri.NOW)
-				elif x == X:
-					speech.speak(["Mouse at left border"], None, priorities.Spri.NOW)
-				elif y == Y:
-					speech.speak(["Mouse at bottom border"], None, priorities.Spri.NOW)
-				elif x == MaxW:
-					speech.speak(["Mouse at right border"], None, priorities.Spri.NOW)
-				elif y == MaxH:
-					speech.speak(["Mouse at bottom border"], None, priorities.Spri.NOW)
-			On = True
-		else:
-			speech.speak(["Feature off"], None, priorities.Spri.NOW)
-			log.debug("Feature offffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff")
-			On = False
+    On = False
+    @scriptHandler.script(gesture="kb:alt+g")
+    def script_indOn(self, gesture):
+        if On == False:
+            speech.speak(["Feature on"], None, priorities.Spri.NOW)
+            log.debug("Feature onnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn")
+            (MaxW, MaxH, (X,Y)) = getTotalWidthAndHeightAndMinimumPosition(displays)
+            try:
+                eventHandler.executeEvent("mouseMove", mouseObject, x=x, y=y)
+                if x == X and y == Y:
+                    speech.speak(["Mouse at bottom left corner"], None, priorities.Spri.NOW)
+                elif x == X and y == MaxY:
+                    speech.speak(["Mouse at top left corner"], None, priorities.Spri.NOW)
+                elif x == MaxW and y == Y:
+                    speech.speak(["Mouse at bottom right corner"], None, priorities.Spri.NOW)
+                elif x == MaxW and y == MaxH:
+                    speech.speak(["Mouse at top right corner"], None, priorities.Spri.NOW)
+                elif x == X:
+                    speech.speak(["Mouse at left border"], None, priorities.Spri.NOW)
+                elif y == Y:
+                    speech.speak(["Mouse at bottom border"], None, priorities.Spri.NOW)
+                elif x == MaxW:
+                    speech.speak(["Mouse at right border"], None, priorities.Spri.NOW)
+                elif y == MaxH:
+                    speech.speak(["Mouse at bottom border"], None, priorities.Spri.NOW)
+                On = True
+            except:
+                return
+        else:
+            speech.speak(["Feature off"], None, priorities.Spri.NOW)
+            log.debug("Feature offffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff")
+            On = False
