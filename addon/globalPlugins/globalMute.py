@@ -10,16 +10,15 @@ from scriptHandler import script
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	# Get the default audio capture (microphone) device
-	log.debug("RUNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNn")
 	devices = utils.AudioUtilities.GetMicrophone()
 	interface = devices.Activate(utils.IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
 	volume = cast(interface, POINTER(utils.IAudioEndpointVolume))
 	mute = False
+	# Set defualt mic state to unmuted
 	volume.SetMute(0, None)
 	@script(gesture='kb:NVDA+g')
 	def script_muteMic(self, gesture):
 		# Mute the mic
-		log.debug("BUTTON PRESSEDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD")
 		if GlobalPlugin.mute == False:
 			GlobalPlugin.mute = True
 			GlobalPlugin.volume.SetMute(1, None)
