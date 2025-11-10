@@ -38,17 +38,16 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
             version = info["ProductVersion"]
         except Exception:
             version = "Unknown"
-        return app_name, process_path, version
+        return app_name, version
 
     def copy_debug_info(self):
         windows = self.get_windows_info()
-        app_name, app_path, app_version = self.get_focused_app_info()
+        app_name, app_version = self.get_focused_app_info()
 
         text = (
             f"NVDA version: {nvda_version}\n"
             f"{windows}\n"
             f"Focused App: {app_name} ({app_version})\n"
-            f"Path: {app_path}\n"
         )
 
         api.copyToClip(text)
