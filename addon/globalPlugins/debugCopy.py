@@ -4,7 +4,7 @@ import api
 import platform
 import sys
 import winreg
-import fileUtils import getFileVersionInfo
+from fileUtils import getFileVersionInfo
 from versionInfo import version as nvda_version
 
 
