@@ -4,7 +4,7 @@ import api
 import platform
 import sys
 import winreg
-import win32api
+import fileUtils import getFileVersionInfo
 from versionInfo import version as nvda_version
 
 
@@ -31,10 +31,11 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
         app_name = fg.appModule.appName
         process_path = fg.appModule.appPath
         try:
-            info = win32api.GetFileVersionInfo(process_path, '\\')
-            ms = info['FileVersionMS']
-            ls = info['FileVersionLS']
-            version = f"{ms >> 16}.{ms & 0xFFFF}.{ls >> 16}.{ls & 0xFFFF}"
+            info = getFileVersionInfo(process_path, 'ProductVersion')
+            # ms = info['FileVersionMS']
+            # ls = info['FileVersionLS']
+            # version = f"{ms >> 16}.{ms & 0xFFFF}.{ls >> 16}.{ls & 0xFFFF}"
+            version = info["ProductVersion"]
         except Exception:
             version = "Unknown"
         return app_name, process_path, version
