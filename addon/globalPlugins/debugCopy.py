@@ -54,12 +54,10 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
         ui.message("Debug info copied to clipboard.")
         return text
 
-    # 🪄 Add a gesture-bound script
     def script_copyDebugInfo(self, gesture):
         """Copies system and app debug info to the clipboard."""
         self.copy_debug_info()
 
-    # Register gestures (key bindings)
     __gestures = {
-        "kb:NVDA+shift+d": "copyDebugInfo"
+        "kb:NVDA+shift+k": "copyDebugInfo"
     }
